@@ -1,0 +1,184 @@
+﻿<Window x:Class="HT.Form"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HT"
+        mc:Ignorable="d"
+           Title="MainWindow" Height="610" Width="500"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="#383660"
+        WindowStartupLocation="CenterScreen">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation From="0" To="1" Duration="0:0:0.25" Storyboard.TargetProperty="Opacity">
+                    </DoubleAnimation>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <!-- menu -->
+            <RowDefinition/>
+            <!-- content -->
+        </Grid.RowDefinitions>
+        
+
+        <!-- nav with logo-->
+        <Grid Background="#fe6584"
+              Cursor="Arrow">
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Change Your Life Permanently"
+                           Foreground="white"
+                           FontSize="20"
+                           FontWeight="Medium"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontFamily="Fonts/#Dosis"
+                           Margin="5"/>
+                <TextBlock Text="With Small Steps"
+                           Foreground="white"
+                           Background="#3dddc2"
+                           Padding="5 1"
+                           FontSize="15"
+                           FontWeight="Medium"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontFamily="Fonts/#Dosis"/>
+            </StackPanel>
+            <Grid Grid.Row="1" Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1" Text="HABIT"
+                           Foreground="LightGray"
+                           FontSize="15"
+                           FontWeight="Medium"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontFamily="Fonts/#Dosis"
+                           Margin="5"/>
+                <TextBox x:Name="habitBox" Grid.Column="2" MaxLength="50" Height="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="25" TextWrapping="Wrap" />
+
+                <TextBlock Grid.Column="1" Grid.Row="1" Text="REPEAT"
+                           Foreground="LightGray"
+                           FontSize="15"
+                           FontWeight="Medium"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontFamily="Fonts/#Dosis"
+                           Margin="5"/>
+                <Slider x:Name="timesAWeek" Value="7" IsSnapToTickEnabled="True" Minimum="1" Maximum="7" TickPlacement="BottomRight" Ticks="0,1,2,3,4,5,6,7" Grid.Column="2" Grid.Row="1" Height="25" Margin="25" Foreground="Gray" />
+                <Grid Grid.Column="2" Grid.Row="1" Height="25" Margin="16 45 16 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Label FontSize="10" FontFamily="Fonts/#Dosis" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Center">1</Label>
+                    <Label FontSize="10" FontFamily="Fonts/#Dosis" Grid.Column="1" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Center">2</Label>
+                    <Label FontSize="10" FontFamily="Fonts/#Dosis" Grid.Column="2" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Center">3</Label>
+                    <Label FontSize="10" FontFamily="Fonts/#Dosis" Grid.Column="3" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Center">4</Label>
+                    <Label FontSize="10" FontFamily="Fonts/#Dosis" Grid.Column="4" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Center">5</Label>
+                    <Label FontSize="10" FontFamily="Fonts/#Dosis" Grid.Column="5" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Center">6</Label>
+                    <Label FontSize="10" FontFamily="Fonts/#Dosis" Grid.Column="6" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Center">7</Label>
+                </Grid>
+                <!--<TextBox Grid.Column="2" Grid.Row="1" Height="25" Margin="25" TextWrapping="Wrap" TextBlock.TextAlignment="Center"/>-->
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <Button Content="Add habit"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Medium"
+                            Click="SendNewHabitToDB">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                                <Setter Property="Background" Value="#fe6584"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#ff4c70"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="100" Height="25"
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+                <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                    <Button Content="Cancel"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Medium"
+                            Click="Button_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                                <Setter Property="Background" Value="#181735"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#0f0f2d"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="100" Height="25"
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
